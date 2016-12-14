@@ -1,108 +1,73 @@
-app.controller("MainCtrl", function($scope, $http){
+app.controller("MainCtrl", function($scope, $http, $filter){
 
-    var apiUrl = 'http://aha.indicoebm.com/api/RiskCalculatorManager/',
+    // Basic admin:hvby0LTwjYCzP8Hojy4X
+
+    var apiUrl = 'http://132.148.71.52/admin-panel-0.0.1-SNAPSHOT',
         apiHeaders = {
             'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json;charset=utf-8',
+            'Authorization': 'Basic YWRtaW46aHZieTBMVHdqWUN6UDhIb2p5NFg='
         };
 
-    $scope.races = {
-        '-': 'Select race',
-        'AA': 'African American',
-        'WH': 'Other'
-    };
+    $scope.users = [];
+    $scope.user_mod = {};
+    $scope.user_mod_selected = false;
 
-    $scope.bs_data = {
-        Race: '-',
-        TreatmentwithStatin: false,
-        TreatmentforHypertension: false,
-        HistoryofDiabetes: false,
-        CurrentSmoker: false,
-        AspirinTherapy: false
-    };
+    var url = apiUrl + '/users/list';
+    $http({
+        method: "GET",
+        url: url,
+        headers: apiHeaders,
+        data: {}
+    }).then(function(res){
+        $scope.users = res.data.content;
+        console.log($scope.users);
+    }, function(res){
+        console.log(res)
+    });
 
-    $scope.ur_data = {
-        TreatmentwithStatin: false,
-        TreatmentforHypertension: false,
-        HistoryofDiabetes: false,
-        CurrentSmoker: false,
-        AspirinTherapy: false
-    };
-
-    $scope.submitBaselineRisk = function(blrForm) {
-        $scope.blrFormSubmited = true;
-        if (blrForm.$valid) {
-            $scope.blrFormLoading = true;
-            $scope.blrFormSuccess = false;
-            $scope.blrFormWarning = false;
-            $scope.blrFormError = false;
-
-            var url = apiUrl + 'GetBaselineRiskResult';
-            $http({
-                method: "POST",
-                url: url,
-                headers: apiHeaders,
-                data: $scope.bs_data
-            }).then(function(res){
-                $scope.blrFormLoading = false;
-                var data = res.data;
-                if (data.status == "Success") {
-                    $scope.blrFormSuccess = true;
-                    $scope.baselineRisk = data.baselineRisk;
-                    $scope.therapyChoice = data.therapyChoice;
-                    $scope.ur_data.age = $scope.bs_data.age;
-                    $scope.ur_data.Race = $scope.bs_data.Race;
-                    $scope.ur_data.Gender = $scope.bs_data.Gender;
-                } else if (data.status == "Error") {
-                    $scope.blrFormWarning = true;
-                    $scope.blrFormWarningMessage = data.message;
-                }
-            }, function(res){
-                $scope.blrFormError = true;
-            });
+    $scope.searchUsers = function() {
+        var result = $filter('filter')($scope.users, $scope.search_users);
+        if (result.length == 1) {
+            $scope.selectUser(result[0]);
+        } else {
+            $scope.cancelUser();
         }
     };
 
-    $scope.submitUpdatedRisk = function(urForm) {
-        $scope.urFormSubmited = true;
-        if (urForm.$valid) {
-            $scope.urFormLoading = true;
-            $scope.urFormSuccess = false;
-            $scope.urFormWarning = false;
-            $scope.urFormError = false;
+    $scope.selectUser = function(user) {
+        $scope.user_mod = user;
+        $scope.user_mod_selected = true;
+    };
 
-            if (parseFloat($scope.bs_data.age) >= parseFloat($scope.ur_data.age)) {
-                $scope.urFormLoading = false;
-                $scope.urFormWarning = true;
-                $scope.urFormWarningMessage = "Warning, age must be greater than previous age entered in baseline risk.";
-            } else {
-                var url = apiUrl + 'GetFollowUpRiskResult';
-                $http({
-                    method: "POST",
-                    url: url,
-                    headers: apiHeaders,
-                    data: {
-                        "BaselineParameters": $scope.bs_data,
-                        "FollowupParameters": $scope.ur_data
-                    }
-                }).then(function(res){
-                    $scope.urFormLoading = false;
-                    var data = res.data;
-                    if (data.status == "Success") {
-                        $scope.urFormSuccess = true;
-                        $scope.followupResult = data.followupResult;
-                        $scope.urBaselineRisk = data.baselineRisk;
-                        $scope.followupRiskNothingDone = data.followupRiskNothingDone;
-                        $scope.compositeASCVDRisk = data.compositeASCVDRisk;
-                    } else if (data.status == "Error") {
-                        $scope.urFormWarning = true;
-                        $scope.urFormWarningMessage = data.message;
-                    }
-                }, function(res){
-                    $scope.urFormError = true;
-                });
-            }
-        }
-    }
+    $scope.addUser = function() {
+        $scope.user_mod = {};
+        $scope.user_mod_selected = true;
+    };
+
+    $scope.cancelUser = function() {
+        $scope.user_mod = {};
+        $scope.user_mod_selected = false;
+    };
+
+    $scope.saveUser = function() {
+        console.log($scope.user_mod);
+        console.log('save user');
+    };
+
+    $scope.deleteUser = function() {
+        console.log($scope.user_mod);
+        console.log('delete');
+    };
+
+
+
+
+
+
+    $scope.map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+    });
 
 });

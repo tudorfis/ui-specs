@@ -6,7 +6,7 @@ $default-color: #000000;
 $default-hover: #4C4C4C;
 
 $light-grey: #F7F7F7;
-$grey: #EAEAEA;
+$grey: #ccc;
 
 $shade-color-1: #333333;
 $shade-color-2: #4C4C4C;
@@ -14,6 +14,13 @@ $shade-color-3: #C1C1C1;
 
 * {
   color: $default-color;
+}
+.btn {
+  outline: 0 !important;
+  box-shadow: 10px 10px 5px -9px $grey;
+}
+input {
+  box-shadow: inset 3px 5px 5px -5px #ccc !important;
 }
 .red-bg {
   background-color: $primary-color;
@@ -26,6 +33,39 @@ $shade-color-3: #C1C1C1;
 }
 .white-bg {
   background-color: white !important;
+}
+
+.bt-grey {
+  border-top: 1px solid $grey;
+}
+.br-grey {
+  border-right: 1px solid $grey;
+}
+.bb-grey {
+  border-bottom: 1px solid $grey;
+}
+.bl-grey {
+  border-left: 1px solid $grey;
+}
+
+.border-radius-1 {
+  border-radius: 25px;
+}
+.border-radius-2 {
+  border-radius: 10px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+.mt5 {
+  margin-top: 5px;
+}
+.selected-tr {
+  td {
+    background-color: $light-grey;
+    font-weight: bold;
+  }
 }
 
 .loading {
@@ -42,196 +82,6 @@ $shade-color-3: #C1C1C1;
 .el-center {
   margin: 0 auto;
   float: none;
-}
-#ahaHeader {
-  display: none;
-}
-.top-title {
-  margin: 0;
-  padding: 0;
-  h3 {
-    border-bottom: 2px solid $primary-color;
-    padding: 0 0 15px 0;
-    margin-bottom: 0;
-    font-size: 20px;
-    text-align: center;
-  }
-}
-.top-links {
-  margin: 0;
-  padding: 0;
-  box-shadow: 0 7px 10px -5px $grey;
-  div {
-    padding: 0;
-    margin: 0;
-    a {
-      padding: 7px 0;
-      font-size: 14px;
-      border-radius: 0;
-      box-shadow: none !important;
-      color: $default-color !important;
-      text-transform: none !important;
-    }
-  }
-  .active-link {
-    border-bottom: 2px solid $primary-color;
-  }
-}
-.select-row {
-  padding: 15px 0;
-  margin: 0 auto !important;
-  border-bottom: 1px solid $grey;
-  .in-col-1 {
-    padding-left :0;
-  }
-  .in-col-2 {
-    padding-right: 0;
-  }
-  .help-block {
-    padding-left: 0 !important;
-  }
-  &.radio-row {
-    padding: 0;
-    .title {
-      padding-top: 10px;
-    }
-    .help-block {
-      margin-bottom: 15px !important;
-    }
-  }
-  &.dropdown-row {
-    .dropdown-toggle {
-      font-size: 14px;
-    }
-  }
-  .title {
-    padding-top: 5px;
-  }
-  span {
-    font-weight: bold;
-  }
-  .radio {
-    padding-left: 25px;
-    padding-top: 0;
-    margin-left: 10px;
-    margin-bottom: 10px;
-  }
-}
-.results-div {
-  padding: 0;
-  margin-top: -20px;
-}
-.risk-top {
-  margin: 0 -15px;
-  h1 {
-    text-align: center;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-  }
-  p {
-    text-align: center;
-    font-size: 16px;
-    color: white;
-    padding-bottom: 10px;
-  }
-}
-.result-row {
-  margin: 0;
-  padding: 5px;
-  border-bottom: 1px solid $grey;
-  .div-title {
-    padding: 10px 10px 10px 0
-  }
-  .title {
-    font-size: 13px;
-  }
-  .big-title {
-    font-size: 20px;
-    color: #A80000;
-    font-weight: bold
-  }
-  .in-row {
-    padding: 0;
-    margin: 0;
-  }
-  div {
-    padding: 10px 0;
-  }
-  .result-text {
-    font-weight: bold;
-    color: $primary-color;
-    font-size: 16px;
-  }
-}
-.result-row-title {
-  margin: 10px -15px -10px -15px;
-  .title {
-    padding: 15px;
-    span {
-      font-size: 18px;
-      color: $primary-color;
-    }
-  }
-  .sub-title {
-    padding: 15px;
-    padding-left: 0;
-    span {
-      font-size: 16px;
-      font-weight: bold;
-      color: $primary-hover;
-      text-align: center;;
-    }
-  }
-}
-.extend-row {
-  padding: 0 10px;
-  .extend-in-row-title {
-    cursor: pointer;
-    background-color: $light-grey;
-    padding: 0 10px;
-    margin: 0;
-    span {
-      font-size: 12px;
-    }
-    i {
-      font-size: 10px;
-      color: $shade-color-3;
-    }
-  }
-  .extend-in-row-content {
-    background-color: $light-grey;
-    margin: 0 0 -5px 0;
-    padding: 5px 10px;
-    font-size: 12px;
-    color: #8c8c8c;
-  }
-  div {
-    padding: 10px 0;
-  }
-}
-.sub-result-row {
-  padding: 0 !important;
-  margin: 10px -15px !important;
-  border-bottom: 1px solid $grey;
-  .title {
-    padding: 10px 0;
-    span {
-      font-size: 15px;
-    }
-  }
-  .sub-title {
-    padding: 10px 0;
-    span {
-      font-size: 15px;
-      text-align: center;
-    }
-  }
-}
-.legend-row {
-  text-align: center;
-  font-size: 12px;
-  color: grey;
 }
 .has-error {
   .help-block {

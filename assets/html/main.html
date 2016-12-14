@@ -1,0 +1,136 @@
+<div class="row">
+    <div class="col-xs-3 br-grey">
+        <div class="row bb-grey text-center">
+            <div class="col-xs-12">
+                <h3>Welcome Admin</h3>
+                <button class="btn btn-default col-xs-12 border-radius-2">NEW CUSTOMERS <br> SETUPS</button>
+                <div class="clearfix">&nbsp;</div>
+            </div>
+        </div>
+        <div class="row bb-grey text-center">
+            <div class="col-xs-12">
+                <h3>Customers</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search_customers" ng-model="search_users" ng-keyup="searchUsers()" placeholder="Search ...">
+                </div>
+                <button class="btn btn-primary border-radius-2">GO</button>
+                <div class="clearfix">&nbsp;</div>
+            </div>
+        </div>
+        <div class="row bb-grey text-center">
+            <div class="col-xs-12">
+                <div class="clearfix">&nbsp;</div>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">ORDERS</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">DEVICES</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">SUBSCRIPTIONS</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">NOTIFICATIONS</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">ALERTS</button>
+                <div class="clearfix">&nbsp;</div>
+            </div>
+        </div>
+        <div class="row bb-grey text-ceter">
+            <div class="col-xs-12">
+                <div class="clearfix">&nbsp;</div>
+                <h4>Settings</h4>
+                <div class="form-group">
+                    <label for="server_name">Server Name</label>
+                    <input type="text" class="form-control" id="server_name" placeholder="">
+                </div>
+                <button class="btn btn-primary border-radius-2">Save</button>
+                <div class="clearfix">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-9">
+        <div class="clearfix">&nbsp;</div>
+        <div class="row bb-grey" ng-hide="!search_users">
+            <div class="col-xs-9">
+                <p ng-hide="users.length">No users to display</p>
+                <table class="table" ng-show="users.length">
+                    <thead>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Phone</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in users | filter:search_users" style="cursor: pointer;"
+                            ng-class="{'selected-tr': user.id == user_mod.id}"
+                            ng-click="selectUser(user);">
+                            <td>{{user.name}}</td>
+                            <td>{{user.surname}}</td>
+                            <td>{{user.phone}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <small>* select an user by clicking on him</small>
+                <div class="clearfix">&nbsp;</div>
+                <div class="row text-center">
+                    <button class="btn btn-primary border-radius-2" ng-hide="user_mod_selected" ng-click="addUser()">Add User</button>
+                    <button class="btn btn-success border-radius-2" ng-show="user_mod_selected" ng-click="saveUser();">Save</button>
+                    <button class="btn btn-danger border-radius-2" ng-show="user_mod_selected" ng-click="deleteUser();">Delete</button>
+                    <button class="btn btn-default border-radius-2" ng-show="user_mod_selected" ng-click="cancelUser();">Cancel</button>
+                </div>
+            </div>
+            <div class="col-xs-3 text-center">
+                <img src="./assets/img/no_avatar.gif" alt="..." class="img-circle">
+                <div class="clearfix">&nbsp;</div>
+                <button class="btn btn-primary col-xs-12 border-radius-1 mb5">PROFILE</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">DEVICES</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">SUBSCRIPTIONS</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">NOTIFICATIONS</button>
+                <button class="btn btn-default col-xs-12 border-radius-1 mb5">TRACK-MAP</button>
+                <div class="clearfix">&nbsp;</div>
+            </div>
+        </div>
+        <div class="row col-xs-12" ng-show="user_mod_selected">
+            <div class="clearfix">&nbsp;</div>
+            <form novalidate>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" ng-model="user_mod.name" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Email</label>
+                        <input type="text" class="form-control" id="email" ng-model="user_mod.email" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook">Facebook</label>
+                        <input type="text" class="form-control" id="facebook" ng-model="user_mod.facebook" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>Map</label>
+                        <div id="map" style="height: 200px"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" class="form-control" id="surname" ng-model="user_mod.surname" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" ng-model="user_mod.phone" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" id="password" ng-model="user_mod.password" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="home_address">Home Address</label>
+                        <input type="text" class="form-control" id="home_address" ng-model="user_mod.homeAddress" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox"> Activated
+                        </label>
+                    </div>
+                    <div class="row text-center">
+                          <button class="btn btn-primary">Save</button>
+                          <button class="btn btn-default">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

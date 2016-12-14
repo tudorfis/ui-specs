@@ -1,12 +1,9 @@
 app.config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/baseline-risk');
+    $urlRouterProvider.otherwise('/');
     $stateProvider
-        .state('baseline-risk', {
-            url: '/baseline-risk',
-            templateUrl: 'assets/html/baseline-risk.html'
-        })
-        .state('updated-risk', {
-            url: '/updated-risk',
-            templateUrl: 'assets/html/updated-risk.html'
+        .state('main', {
+            url: '/',
+            templateUrl: './assets/html/main.html',
+            controller: 'MainCtrl'
         });
 });
