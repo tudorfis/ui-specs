@@ -1,0 +1,188 @@
+* {
+  color: #000000; }
+
+.red-bg {
+  background-color: #DF0000; }
+
+.red-second-bg {
+  background-color: #A80000; }
+
+.red-third-bg {
+  background-color: #821e1f; }
+
+.white-bg {
+  background-color: white !important; }
+
+.loading {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto; }
+
+.radio {
+  cursor: pointer; }
+
+.dropdown-menu {
+  min-width: 100%; }
+
+.el-center {
+  margin: 0 auto;
+  float: none; }
+
+#ahaHeader {
+  display: none; }
+
+.top-title {
+  margin: 0;
+  padding: 0; }
+  .top-title h3 {
+    border-bottom: 2px solid #DF0000;
+    padding: 0 0 15px 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    text-align: center; }
+
+.top-links {
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 7px 10px -5px #EAEAEA; }
+  .top-links div {
+    padding: 0;
+    margin: 0; }
+    .top-links div a {
+      padding: 7px 0;
+      font-size: 14px;
+      border-radius: 0;
+      box-shadow: none !important;
+      color: #000000 !important;
+      text-transform: none !important; }
+  .top-links .active-link {
+    border-bottom: 2px solid #DF0000; }
+
+.select-row {
+  padding: 15px 0;
+  margin: 0 auto !important;
+  border-bottom: 1px solid #EAEAEA; }
+  .select-row .in-col-1 {
+    padding-left: 0; }
+  .select-row .in-col-2 {
+    padding-right: 0; }
+  .select-row .help-block {
+    padding-left: 0 !important; }
+  .select-row.radio-row {
+    padding: 0; }
+    .select-row.radio-row .title {
+      padding-top: 10px; }
+    .select-row.radio-row .help-block {
+      margin-bottom: 15px !important; }
+  .select-row.dropdown-row .dropdown-toggle {
+    font-size: 14px; }
+  .select-row .title {
+    padding-top: 5px; }
+  .select-row span {
+    font-weight: bold; }
+  .select-row .radio {
+    padding-left: 25px;
+    padding-top: 0;
+    margin-left: 10px;
+    margin-bottom: 10px; }
+
+.results-div {
+  padding: 0;
+  margin-top: -20px; }
+
+.risk-top {
+  margin: 0 -15px; }
+  .risk-top h1 {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-weight: bold; }
+  .risk-top p {
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    padding-bottom: 10px; }
+
+.result-row {
+  margin: 0;
+  padding: 5px;
+  border-bottom: 1px solid #EAEAEA; }
+  .result-row .div-title {
+    padding: 10px 10px 10px 0; }
+  .result-row .title {
+    font-size: 13px; }
+  .result-row .big-title {
+    font-size: 20px;
+    color: #A80000;
+    font-weight: bold; }
+  .result-row .in-row {
+    padding: 0;
+    margin: 0; }
+  .result-row div {
+    padding: 10px 0; }
+  .result-row .result-text {
+    font-weight: bold;
+    color: #DF0000;
+    font-size: 16px; }
+
+.result-row-title {
+  margin: 10px -15px -10px -15px; }
+  .result-row-title .title {
+    padding: 15px; }
+    .result-row-title .title span {
+      font-size: 18px;
+      color: #DF0000; }
+  .result-row-title .sub-title {
+    padding: 15px;
+    padding-left: 0; }
+    .result-row-title .sub-title span {
+      font-size: 16px;
+      font-weight: bold;
+      color: #A80000;
+      text-align: center; }
+
+.extend-row {
+  padding: 0 10px; }
+  .extend-row .extend-in-row-title {
+    cursor: pointer;
+    background-color: #F7F7F7;
+    padding: 0 10px;
+    margin: 0; }
+    .extend-row .extend-in-row-title span {
+      font-size: 12px; }
+    .extend-row .extend-in-row-title i {
+      font-size: 10px;
+      color: #C1C1C1; }
+  .extend-row .extend-in-row-content {
+    background-color: #F7F7F7;
+    margin: 0 0 -5px 0;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #8c8c8c; }
+  .extend-row div {
+    padding: 10px 0; }
+
+.sub-result-row {
+  padding: 0 !important;
+  margin: 10px -15px !important;
+  border-bottom: 1px solid #EAEAEA; }
+  .sub-result-row .title {
+    padding: 10px 0; }
+    .sub-result-row .title span {
+      font-size: 15px; }
+  .sub-result-row .sub-title {
+    padding: 10px 0; }
+    .sub-result-row .sub-title span {
+      font-size: 15px;
+      text-align: center; }
+
+.legend-row {
+  text-align: center;
+  font-size: 12px;
+  color: grey; }
+
+.has-error .help-block {
+  clear: both;
+  padding: 0 15px;
+  margin: 0;
+  color: #DF0000; }
